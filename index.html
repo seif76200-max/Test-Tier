@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Mc Tier List</title>
+<title>MCTier List EG</title>
 <style>
 :root{--bg:#070b14;--panel:#0e1524;--line:#1c2638;--text:#e8edf5;--mute:#7d8aa0;--gold:#ff3b4e;--blue:#4aa3ff;--purple:#a46bff;--red:#ff4d6a;--ht:#ff9d4a;--lt:#9fb0c8;--discord:#5865F2}
 *{box-sizing:border-box;margin:0}
@@ -13,6 +13,15 @@ header,nav,main{position:relative;z-index:1}
 header{display:flex;align-items:center;gap:24px;padding:14px 24px;flex-wrap:wrap}
 .logo{font-weight:800;font-size:22px;letter-spacing:2px;background:linear-gradient(90deg,#fff,var(--gold),#fff);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 4s linear infinite}
 @keyframes shine{to{background-position:-200%}}
+.logo{display:flex;align-items:center;gap:10px;background:none;-webkit-background-clip:border-box;background-clip:border-box;color:var(--text);animation:none;letter-spacing:0}
+.lg-ic{width:44px;height:44px;filter:drop-shadow(0 0 10px #ffb02e99);animation:float 3s ease-in-out infinite}
+.lg-t{font-size:28px;font-weight:900;letter-spacing:1px;background:linear-gradient(90deg,#fff,#ffb3ba,#fff);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 4s linear infinite}
+.logo .eg{font-size:15px;font-weight:900;letter-spacing:2px;padding:4px 11px;border-radius:8px;color:#fff;-webkit-text-fill-color:#fff;background:linear-gradient(135deg,#ff5a6a,#c2182f);box-shadow:0 0 18px #ff3b4e88,inset 0 1px 0 #ffffff55}
+.dcjoin{display:inline-flex;align-items:center;gap:8px;padding:10px 18px 10px 14px;border-radius:999px;background:#5865F218;border:1px solid #5865F28a;color:#fff;text-decoration:none;font-weight:700;font-size:14px;transition:background .2s,box-shadow .2s,transform .15s}
+.dcjoin svg{width:22px;height:22px;fill:#8d98ff;transition:fill .2s}
+.dcjoin:hover{background:#5865F2;box-shadow:0 8px 28px #5865F2aa;transform:translateY(-2px)}.dcjoin:hover svg{fill:#fff}
+.dcjoin:focus-visible{outline:2px solid var(--blue)}
+@media(min-width:900px){.right{flex-wrap:nowrap}#q{width:230px}}
 .logo small{display:block;font-size:10px;letter-spacing:4px;color:var(--gold);-webkit-text-fill-color:var(--gold)}
 .stat b{display:block;font-size:20px}.stat span{font-size:11px;color:var(--mute);letter-spacing:2px}
 .right{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
@@ -52,7 +61,7 @@ main{padding:34px 24px;max-width:1300px;margin:auto}
 .who{padding:6px 0}
 .name{font-weight:700;font-size:16px}
 .title{font-size:13px;color:var(--mute)}.title i{font-style:normal;margin-right:6px}
-.Ace i{color:var(--red)}.Specialist i{color:var(--purple)}.Cadet i{color:var(--blue)}
+.Ace i{color:var(--red)}.Grandmaster i{color:#ff3b4e}.Master i{color:#ff9d4a}.Novice i{color:#7fd6a8}.Rookie i{color:var(--mute)}.Specialist i{color:var(--purple)}.Cadet i{color:var(--blue)}
 .region{justify-self:center;font-size:12px;font-weight:700;padding:4px 14px;border-radius:6px;background:#2a2150;color:#c9b8ff;border:1px solid #4a3a8a}
 .tiers{display:flex;gap:9px;justify-content:flex-end;padding:8px 18px;flex-wrap:nowrap}
 .t{display:flex;flex-direction:column;align-items:center;gap:3px;width:34px;font-size:11px;font-weight:700;transition:transform .2s}
@@ -117,6 +126,7 @@ nav button .px{margin-right:4px}
 .ico .px{width:68%;height:68%;vertical-align:0}
 a.btn{text-decoration:none;display:inline-flex;align-items:center}
 @media(max-width:560px){.igrid{grid-template-columns:1fr}.ibl{margin:auto}}
+@media(min-width:801px){.row,.thead{grid-template-columns:130px 1fr 80px 500px}.tiers{width:500px}}
 .empty{text-align:center;color:var(--mute);padding:60px 0}
 dialog{margin:auto;background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:16px;padding:22px;width:min(520px,94vw);max-height:90vh;overflow:auto}
 dialog::backdrop{background:#000a;backdrop-filter:blur(4px)}
@@ -131,13 +141,14 @@ dialog h3{margin-bottom:14px}.fld{display:grid;gap:6px;margin-bottom:12px;font-s
 <body>
 <canvas id="fx"></canvas><div class="glow g1"></div><div class="glow g2"></div>
 <header>
-  <div class="logo">TIER TEST<small>EGYPT</small></div>
+  <div class="logo"><img id="logoIc" class="lg-ic" alt=""><span class="lg-t">MCTier List</span><span class="eg">EG</span></div>
   <div class="stat"><b id="count">0</b><span>RANKED PLAYERS</span></div>
   <div class="right">
     <input id="q" placeholder="Search player or region..." aria-label="Search">
     <button class="btn gold" id="addBtn" hidden>+ Add player</button>
     <button class="btn gray" id="edBtn" hidden>Editors</button>
-    <div id="auth"></div>
+    <a class="dcjoin" href="https://discord.gg/xAQHqpWp7" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord server"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.2.5a18 18 0 0 0-6.4 0L8.6 3a19.8 19.8 0 0 0-4.9 1.4C.6 9 0 13.500.3 17.900a20 20 0 0 0 6 3l1.3-2.100a13 13 0 0 1-2-1l.5-.4a14.200 14.200 0 0 0 11.800 0l.5.4c-.6.4-1.300.7-2 1l1.300 2.100a20 20 0 0 0 6-3c.4-5.100-.7-9.600-3.400-13.500ZM8.500 15.300c-1.200 0-2.100-1.100-2.100-2.400s.9-2.400 2.100-2.400 2.100 1.100 2.100 2.400-.9 2.400-2.100 2.400Zm7 0c-1.200 0-2.100-1.100-2.100-2.400s.9-2.400 2.100-2.400 2.100 1.100 2.100 2.400-.9 2.400-2.100 2.400Z"/></svg><span>Discord</span></a>
+    <div id="auth" hidden></div>
   </div>
 </header>
 <nav id="tabs"></nav>
@@ -183,11 +194,12 @@ const CONFIG = {
 };
 const MODES=[{id:'sword',name:'Sword',c:'#4aa3ff'},{id:'vanilla',name:'Vanilla',c:'#c06bff'},{id:'axe',name:'Axe',c:'#5ec0f2'},{id:'mace',name:'Mace',c:'#9aa7b8'},{id:'pot',name:'Pot',c:'#ff6bd6'},{id:'nethop',name:'NethOP',c:'#a46bff'},{id:'uhc',name:'UHC',c:'#ff4d6a'},{id:'smp',name:'SMP',c:'#2ee0d0'},{id:'diasmp',name:'Dia SMP',c:'#a46bff'},{id:'spearmace',name:'Spear/Mace',c:'#ffd24a'},{id:'cart',name:'Cart',c:'#ff8a3d'}];
 const DEFAULT_PLAYERS=[
- {name:'Heybaby',region:'NA',tiers:{diasmp:'HT4',vanilla:'LT3',sword:'LT4',axe:'HT5',uhc:'HT5',smp:'LT3',pot:'LT4',nethop:'LT4',mace:'HT5',spearmace:'HT4',cart:'LT4'}},
- {name:'7oda',region:'NA',tiers:{vanilla:'LT5',sword:'HT5',axe:'HT5',uhc:'LT5',smp:'LT5',pot:'LT5',nethop:'LT5',mace:'LT5',spearmace:'LT4'}},
- {name:'ABD12',region:'NA',tiers:{vanilla:'LT4',sword:'LT4',axe:'HT5',uhc:'HT5',smp:'LT4',pot:'LT4',nethop:'LT4',mace:'HT4',spearmace:'LT4'}},
- {name:'ITS_ADHAM788',region:'NA',tiers:{sword:'HT4',axe:'HT5'}},
- {name:'Sak_r',region:'NA',tiers:{sword:'LT3',spearmace:'HT5'}}
+ {name:'Dream',region:'NA',tiers:{diasmp:'HT4',vanilla:'HT3',sword:'LT2',axe:'LT2',uhc:'HT3',smp:'HT3',pot:'HT3',nethop:'LT3',mace:'LT3',spearmace:'HT4',cart:'LT4'}},
+ {name:'Technoblade',region:'NA',tiers:{vanilla:'LT3',sword:'LT2',axe:'HT3',uhc:'LT3',smp:'LT3',pot:'LT3',nethop:'HT3',mace:'LT2',spearmace:'LT3'}},
+ {name:'Notch',region:'EU',tiers:{diasmp:'LT4',vanilla:'LT3',sword:'HT3',axe:'LT3',uhc:'LT3',smp:'LT3',pot:'LT3',nethop:'LT4',mace:'HT3',cart:'HT4'}},
+ {name:'jeb_',region:'EU',tiers:{diasmp:'HT5',vanilla:'HT4',sword:'LT3',axe:'LT3',uhc:'LT4',smp:'HT4',pot:'LT4',nethop:'LT4',mace:'LT4',spearmace:'LT4'}},
+ {name:'Steve',region:'ME',tiers:{vanilla:'LT4',sword:'HT4',axe:'HT4',uhc:'HT5',smp:'LT5',pot:'LT4',nethop:'HT4',mace:'LT3',cart:'LT5'}},
+ {name:'Alex',region:'ME',tiers:{vanilla:'HT5',sword:'HT4',axe:'HT5',uhc:'LT5',smp:'LT3',pot:'HT4',spearmace:'LT5',cart:'HT5'}}
 ];
 /* =========================================== */
 
@@ -204,7 +216,7 @@ window.headErr=im=>{const i=+im.dataset.i+1;const f=[`https://minotar.net/avatar
 const SKIN=[n=>`https://mc-heads.net/body/${n}/200`,n=>`https://minotar.net/armor/body/${n}/200.png`,n=>`https://visage.surgeplay.com/full/256/${n}`,()=>`https://mc-heads.net/body/Steve/200`];
 const skin=(p,c)=>{const n=encodeURIComponent(p.name);return `<img ${c?`class="${c}" `:''}src="${p.skin||SKIN[0](n)}" data-n="${n}" data-i="0" alt="${esc(p.name)}" loading="lazy" onerror="skinErr(this)">`};
 window.skinErr=im=>{const i=+im.dataset.i+1;if(i>=SKIN.length)return;im.dataset.i=i;im.src=SKIN[i](im.dataset.n)};
-const POINTS={HT1:60,LT1:45,HT2:30,LT2:20,HT3:10,LT3:6,HT4:4,LT4:3,HT5:2,LT5:1};
+const POINTS={HT1:60,LT1:44,HT2:28,LT2:16,HT3:10,LT3:6,HT4:4,LT4:3,HT5:2,LT5:1};
 const TIERS=['','HT1','LT1','HT2','LT2','HT3','LT3','HT4','LT4','HT5','LT5'];
 const $=id=>document.getElementById(id), esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const load=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch{return d}};
@@ -245,7 +257,8 @@ function ui(){
 
 /* ---- rendering ---- */
 const pts=(p,m)=>m==='overall'?Object.values(p.tiers).reduce((s,t)=>s+(POINTS[t]||0),0):(POINTS[p.tiers[m]]||0);
-const titleOf=n=>n>=100?'Ace':n>=50?'Specialist':'Cadet';
+const titleOf=n=>n>=400?'Grandmaster':n>=250?'Master':n>=100?'Ace':n>=50?'Specialist':n>=20?'Cadet':n>=10?'Novice':'Rookie';
+const titleName=n=>{const t=titleOf(n);return t==='Rookie'?'Rookie':'Combat '+t};
 const tcell=(m,t)=>t?`<div class="t ${t.slice(0,2)}" style="--mc:${m.c}"><div class="ic">${icon(m)}</div>${t}</div>`:`<div class="t none"><div class="ic"></div><span class="dash">-</span></div>`;
 const tbig=(m,t,p)=>`<div class="tb ${t.slice(0,2)}" style="--mc:${m.c}"><div class="ic">${icon(m)}</div><div><b>${t}</b><span>${p} pts</span></div></div>`;
 function render(){
@@ -270,7 +283,7 @@ function render(){
    return `<div class="row r${x.rank}" data-p="${x.i}" style="animation-delay:${Math.min(k,12)*40}ms">
     <div class="rank"><span>${x.rank}.</span></div>
     <span class="sk">${skin(x.p,'')}</span>
-    <div class="who"><div class="name">${esc(x.p.name)}</div><div class="title ${t}"><i>◆</i>Combat ${t} (${all} points)</div></div>
+    <div class="who"><div class="name">${esc(x.p.name)}</div><div class="title ${t}"><i>◆</i>${titleName(all)} (${all} points)</div></div>
     <div class="region">${esc(x.p.region)}</div>
     <div class="tiers">${MODES.map(m=>tcell(m,x.p.tiers[m.id])).join('')}</div>
     ${eb(x.i)}
@@ -299,7 +312,7 @@ function openInfo(i){
     if(!tr)return `<div class="ic2 off"><span class="ico">${icon(m)}</span><div><b>${m.name}</b><small>Unranked</small></div></div>`;
     const rk=players.filter(x=>x.tiers[m.id]).sort((a,b)=>pts(b,m.id)-pts(a,m.id)).indexOf(p)+1;
     return `<div class="ic2"><span class="ico">${icon(m)}</span><div><b>${m.name}</b><small><em class="${tr.slice(0,2)}">${tr}</em> · ${pts(p,m.id)} pts · #${rk}</small></div></div>`}).join('');
-  $('ibody').innerHTML=`<div class="ib"><div class="ibl">${skin(p,'')}</div><div class="ibr"><div class="iname">${esc(p.name)}</div><div class="title ${t}"><i>◆</i>Combat ${t}</div>
+  $('ibody').innerHTML=`<div class="ib"><div class="ibl">${skin(p,'')}</div><div class="ibr"><div class="iname">${esc(p.name)}</div><div class="title ${t}"><i>◆</i>${titleName(all)}</div>
     <div class="istats"><div><b>#${ov}</b><span>OVERALL</span></div><div><b>${all}</b><span>POINTS</span></div><div><b>${esc(p.region)}</b><span>REGION</span></div><div><b>${Object.keys(p.tiers).length}</b><span>MODES</span></div></div></div></div>
     <div class="igrid">${cells}</div>
     <div class="acts"><a class="btn dc" target="_blank" rel="noopener" href="https://namemc.com/profile/${encodeURIComponent(p.name)}">NameMC</a><button class="btn gray" onclick="$('info').close()">Close</button></div>`;
@@ -337,5 +350,5 @@ $('elist').onclick=e=>{const b=e.target.closest('[data-r]');if(b&&isOwner()){edi
  for(let i=0;i<45;i++)ps.push({x:Math.random()*w,y:Math.random()*h,s:2+Math.random()*5,v:.15+Math.random()*.5,a:.1+Math.random()*.3,c:['#ff3b4e','#4aa3ff','#a46bff'][i%3]});
  (function f(){x.clearRect(0,0,w,h);for(const p of ps){p.y-=p.v;if(p.y<-10){p.y=h+10;p.x=Math.random()*w}x.globalAlpha=p.a;x.fillStyle=p.c;x.fillRect(p.x,p.y,p.s,p.s)}requestAnimationFrame(f)})()})();
 
-(async()=>{await handleHash();ui();tabs();render();if(CONFIG.API_URL){loadApi();setInterval(loadApi,15000);try{new EventSource(CONFIG.API_URL.replace(/\/$/,'')+'/events').onmessage=loadApi}catch(e){}}})();
+(async()=>{try{$('logoIc').src=IMGS.overall}catch(e){}await handleHash();ui();tabs();render();if(CONFIG.API_URL){loadApi();setInterval(loadApi,15000);try{new EventSource(CONFIG.API_URL.replace(/\/$/,'')+'/events').onmessage=loadApi}catch(e){}}})();
 </script></body></html>
